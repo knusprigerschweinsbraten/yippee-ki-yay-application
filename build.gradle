@@ -1,0 +1,10 @@
+subprojects {
+    repositories {
+        mavenCentral()
+    }
+    plugins.withType(JavaPlugin) {
+        compileJava {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+        }
+    }
+}

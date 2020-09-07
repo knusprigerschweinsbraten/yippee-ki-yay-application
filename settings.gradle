@@ -1,0 +1,22 @@
+pluginManagement {
+    plugins {
+        id("io.spring.dependency-management").version("${springDependencyManagementVersion}")
+        id("org.springframework.boot").version("${springBootVersion}")
+    }
+}
+
+include("yippee-ki-yay-application")
+include("yippee-ki-yay-greeting")
+
+rootProject.name = "yippee-ki-yay-application"
+rootProject.children.each { project ->
+    final String projectDirName = project.name.replaceAll("\\p{Upper}") { "-${it.toLowerCase()}" }
+    final String projectName = projectDirName.tokenize('/').last()
+    project.projectDir = new File(settingsDir, projectDirName)
+    project.buildFileName = "${projectName}.gradle"
+    project.name = projectName
+    assert project.projectDir.isDirectory()
+    assert project.buildFile.isFile()
+}
+
+
