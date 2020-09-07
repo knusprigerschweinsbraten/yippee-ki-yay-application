@@ -2,9 +2,30 @@ subprojects {
     repositories {
         mavenCentral()
     }
+    plugins.withType(MavenPublishPlugin) {
+        publishing {
+            repositories {
+                maven {
+                    name = "GitHubPackages"
+                    credentials(PasswordCredentials)
+                    url = uri("https://maven.pkg.github.com/knusprigerschweinsbraten/yippee-ki-yay-application")
+                }
+            }
+        }
+    } 
     plugins.withType(JavaPlugin) {
         compileJava {
             sourceCompatibility = JavaVersion.VERSION_1_8
         }
+        plugins.withType(MavenPublishPlugin) {
+            publishing {
+                publications {
+                    maven(MavenPublication) {
+                        from(components.java)
+                    }
+                }
+            }
+        }
     }
+    
 }
