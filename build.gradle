@@ -7,8 +7,11 @@ subprojects {
             repositories {
                 maven {
                     name = "GitHubPackages"
-                    credentials(PasswordCredentials)
                     url = uri("https://maven.pkg.github.com/knusprigerschweinsbraten/yippee-ki-yay-application")
+                    credentials {
+                        username = project.findProperty("GitHubPackagesUsername") as String? ?: System.getenv("USERNAME")
+                        password = project.findProperty("GitHubPackagesPassword") as String? ?: System.getenv("TOKEN")
+                    }
                 }
             }
         }
