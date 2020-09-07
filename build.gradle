@@ -9,8 +9,8 @@ subprojects {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/knusprigerschweinsbraten/yippee-ki-yay-application")
                     credentials {
-                        username = project.findProperty("GitHubPackagesUsername") as String? ?: System.getenv("USERNAME")
-                        password = project.findProperty("GitHubPackagesPassword") as String? ?: System.getenv("TOKEN")
+                        username = project.findProperty("GitHubPackagesUsername") ?: System.getenv("USERNAME")
+                        password = project.findProperty("GitHubPackagesPassword") ?: System.getenv("TOKEN")
                     }
                 }
             }
