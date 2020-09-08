@@ -6,3 +6,10 @@ plugins {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter:${springBootVersion}")
 }
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifact(bootJar)
+        }
+    }
+}

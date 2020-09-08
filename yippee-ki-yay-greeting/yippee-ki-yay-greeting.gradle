@@ -5,3 +5,10 @@ plugins {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
 }
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}

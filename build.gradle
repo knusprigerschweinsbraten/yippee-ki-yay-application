@@ -20,15 +20,6 @@ subprojects {
         compileJava {
             sourceCompatibility = JavaVersion.VERSION_1_8
         }
-        plugins.withType(MavenPublishPlugin) {
-            publishing {
-                publications {
-                    maven(MavenPublication) {
-                        from(components.java)
-                    }
-                }
-            }
-        }
     }
     
 }
